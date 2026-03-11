@@ -1,17 +1,11 @@
-# Summary
-Describe what changed and why.
+## What changed
+<!-- Brief description -->
 
-# Risk Level
-Low / Medium / High (pick one)
+## Files modified
+<!-- List key files -->
 
-# Tests
-List commands run and results.
-
-# Contribution Checklist
-- [ ] Tests added/updated for behavior changes
-- [ ] Lint/typecheck/build passing
-- [ ] Security review done if auth/data/crypto touched
-- [ ] DB migration tested if schema changed
-
-# Notes
-Anything reviewers should know.
+## Checklist
+- [ ] TypeScript compiles without errors (npx tsc --noEmit)
+- [ ] No console.log left in production code
+- [ ] Tested in browser before PR
+- [ ] deploy-mc.sh run after merge if standalone build affected
