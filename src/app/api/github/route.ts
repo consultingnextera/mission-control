@@ -352,7 +352,7 @@ async function handleGitHubStats() {
   const user = await userRes.json() as Record<string, any>
 
   // Fetch repos (up to 100, sorted by recent push)
-  const reposRes = await githubFetch('/user/repos?per_page=100&sort=pushed&affiliation=owner,collaborator')
+  const reposRes = await githubFetch('/user/repos?per_page=100&sort=pushed')
   if (!reposRes.ok) {
     return NextResponse.json({ error: 'Failed to fetch repos' }, { status: 500 })
   }
