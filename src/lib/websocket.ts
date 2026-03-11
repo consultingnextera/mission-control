@@ -359,6 +359,7 @@ export function useWebSocket() {
       }
       setConnection({
         isConnected: true,
+        isConnecting: false,
         lastConnected: new Date(),
         reconnectAttempts: 0
       })
@@ -562,7 +563,8 @@ export function useWebSocket() {
         // Don't set isConnected yet - wait for handshake
         setConnection({
           url: normalizedUrl,
-          reconnectAttempts: 0
+          reconnectAttempts: 0,
+          isConnecting: true
         })
         // Wait for connect.challenge from server
         log.debug('Waiting for connect challenge')
@@ -586,7 +588,7 @@ export function useWebSocket() {
 
       ws.onclose = (event) => {
         log.info(`Disconnected from Gateway: ${event.code} ${event.reason}`)
-        setConnection({ isConnected: false })
+        setConnection({ isConnected: false, isConnecting: false })
         handshakeCompleteRef.current = false
         stopHeartbeat()
 

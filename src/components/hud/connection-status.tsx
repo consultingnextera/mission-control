@@ -20,17 +20,15 @@ export function ConnectionStatus({
 
   const getStatusColor = () => {
     if (isConnected) return 'bg-green-500 animate-pulse'
+    if (connection.isConnecting) return 'bg-blue-400 animate-pulse'
     if (connection.reconnectAttempts > 0) return 'bg-yellow-500'
     return 'bg-red-500'
   }
 
   const getStatusText = () => {
-    if (isConnected) {
-      return 'Connected'
-    }
-    if (connection.reconnectAttempts > 0) {
-      return `Reconnecting... (${connection.reconnectAttempts}/10)`
-    }
+    if (isConnected) return 'Connected'
+    if (connection.isConnecting) return 'Connecting...'
+    if (connection.reconnectAttempts > 0) return `Reconnecting... (${connection.reconnectAttempts}/10)`
     return 'Disconnected'
   }
 

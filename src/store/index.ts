@@ -259,6 +259,7 @@ export interface CurrentUser {
 
 export interface ConnectionStatus {
   isConnected: boolean
+  isConnecting?: boolean
   url: string
   lastConnected?: Date
   reconnectAttempts: number
